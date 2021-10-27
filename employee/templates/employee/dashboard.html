@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+{% comment %} Hello, {{ user.username|default:'Guest' }}! {% endcomment %}
+<div class="alert alert-success  alert-dismissible fade show text-center mt-2" role="alert">
+    <strong>Hello, {{ user.username|default:'Guest' }}</strong>, Selamat datang di Sistem Monitoring Valuta Asing Shinhan (MVAS). 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+{% comment %} <div>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div> {% endcomment %}
+{% endblock %}
