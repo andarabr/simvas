@@ -1,0 +1,80 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+        <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="icon" href="https://www.shinhan.co.id/favicon.ico" sizes="32x32" type="image/png">
+    <title>MVAS - Home</title>
+</head>
+<body style="font-family : Nunito;font-size: 0.9rem;">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm justify-content-between">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                MVAS
+            </a>
+            {% comment %} <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button> {% endcomment %}
+
+            <div class="form-inline">
+                <!-- Left Side Of Navbar -->
+                {% if user.is_authenticated %}
+                    <a class="btn btn-sm btn-outline-light disabled mr-2" readonly href="#">Logged in as : {{ user.username|default:'Guest' }}</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </div>
+            {% comment %} <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> {% endcomment %}
+        </div>
+    </nav>
+    <main>
+        <div class="row mr-0">
+            {% bootstrap_messages %}
+
+            <div class="col-lg-2 col-md-3" style="border: 1px solid rgba(0, 0, 0, 0.125);; min-height:90vh; padding-right : 0; background-color : rgb(255, 255, 255);">
+                <img src="{% static 'employee/logo.png' %}" class="img-fluid p-2 pr-4 pl-3" alt="Bank Shinhan Indonesia">
+                <hr class="m-0">
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">User Management</a> 
+                    <div class="collapse" id="collapseExample">
+                        <a href="#" class="list-group-item list-group-item-secondary list-group-item-action pt-1 pb-1">List User</a>
+                        <a href="#" class="list-group-item list-group-item-secondary list-group-item-action pt-1 pb-1">Tambah User</a>
+                    </div>
+                    <a href="#" class="list-group-item list-group-item-action">Report Management</a>
+                </div>
+            </div>
+            <div class="col-lg-10 col-md-9" style="">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </main>  
+    <footer>
+        <div class="text-center p-2 bg-dark text-white">
+            <a class="text-white" href="https://www.shinhan.co.id/"><b>Bank Shinhan Indonesia</b></a>
+            | Copyright © 2021
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
