@@ -20,4 +20,5 @@ from django.urls.conf import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('employee.urls')),
+    path('', include('mvasapi.urls')),
 ]
