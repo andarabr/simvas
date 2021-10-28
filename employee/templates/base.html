@@ -15,11 +15,16 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="icon" href="https://www.shinhan.co.id/favicon.ico" sizes="32x32" type="image/png">
     <title>MVAS - Home</title>
+    <style>
+        .list-group-flush > .list-group-item:last-child {
+            border-bottom-width: 1px;
+        }
+    </style>
 </head>
 <body style="font-family : Nunito;font-size: 0.9rem;">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm justify-content-between">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'index-employee' %}">
                 MVAS
             </a>
             {% comment %} <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -48,13 +53,17 @@
             <div class="col-lg-2 col-md-3" style="border: 1px solid rgba(0, 0, 0, 0.125);; min-height:90vh; padding-right : 0; background-color : rgb(255, 255, 255);">
                 <img src="{% static 'employee/logo.png' %}" class="img-fluid p-2 pr-4 pl-3" alt="Bank Shinhan Indonesia">
                 <hr class="m-0">
+                
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">User Management</a> 
+                    {% if user.is_staff %}
+                    <a href="{% url 'index-employee' %}" class="list-group-item list-group-item-action">User Management</a>
+                    {% comment %} <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">User Management</a> 
                     <div class="collapse" id="collapseExample">
                         <a href="#" class="list-group-item list-group-item-secondary list-group-item-action pt-1 pb-1">List User</a>
                         <a href="#" class="list-group-item list-group-item-secondary list-group-item-action pt-1 pb-1">Tambah User</a>
-                    </div>
-                    <a href="#" class="list-group-item list-group-item-action">Report Management</a>
+                    </div> {% endcomment %}
+                    {% endif %}
+                    <a href="{% url 'index-report' %}" class="list-group-item list-group-item-action">Report Management</a>
                 </div>
             </div>
             <div class="col-lg-10 col-md-9" style="">
