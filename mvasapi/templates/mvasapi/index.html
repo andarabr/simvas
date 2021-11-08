@@ -11,5 +11,64 @@
 </div>
 
 <h3>Report Management</h3>
+<table class="table table-striped table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Transaction Date</th>
+            <th>Corporate ID</th>
+            <th>Corporate Name</th>
+            <th>Platform</th>       
+            <th>Deal Type</th>   
+            <th>Direction</th>
+            <th>Base Currency</th>
+            <th>Quote Currency</th>
+            <th>Base Volume</th>
+            <th>Quote Volume</th>
+            <th>Periods</th>
+            <th>Near Rate</th>
+            <th>Far Rate</th>
+            <th>Near Value Date</th>
+            <th>Far Value Date</th>
+            <th>Confirmed At</th>
+            <th>Confirmed By</th>
+            <th>Trader ID</th>
+            <th>Trader Name</th>
+            <th>Transaction Purpose</th>
+            <th>Action</th>                      
+        </tr>
+    </thead>
+    <tbody>
+    {% for tran in transactions %}
+        <tr>
+            <td>{{tran.transaction_id}}</td>
+            <td>{{tran.transaction_date}}</td>
+            <td>{{tran.corporate_id}}</td>
+            <td>{{tran.corporate_name}}</td>
+            <td>{{tran.platform}}</td>
+            <td>{{tran.deal_type}}</td>
+            <td>{{tran.direction}}</td>
+            <td>{{tran.base_currency}}</td>
+            <td>{{tran.quote_currency}}</td>
+            <td>{{tran.base_volume}}</td>
+            <td>{{tran.quote_volume}}</td>
+            <td>{{tran.periods}}</td>
+            <td>{{tran.near_rate}}</td>
+            <td>{{tran.far_rate}}</td>
+            <td>{{tran.near_value_date}}</td>
+            <td>{{tran.far_value_date}}</td>
+            <td>{{tran.confirmed_at}}</td>
+            <td>{{tran.confirmed_by}}</td>
+            <td>{{tran.trader_id}}</td>
+            <td>{{tran.trader_name}}</td>
+            <td>{{tran.transaction_purpose}}</td>
+            <td>
+                <button class="btn btn-success btn-sm">Send Data</button>
+                {% comment %} <button class="btn btn-warning btn-sm">Resend</button> {% endcomment %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}

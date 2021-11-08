@@ -8,7 +8,7 @@ def index(request):
     if request.user.is_authenticated:
         if request.user.is_staff:
             users = User.objects.select_related('employee').order_by('id');
-            pprint(users)
+            # pprint(users)
             context = {'users' : users}
             return render(request, "employee/dashboard.html", context)
         else:
