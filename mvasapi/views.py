@@ -60,11 +60,13 @@ def api_test_idv(request, id):
     headers = {'X-BI-Client-Id': 'test'}
 
     response = requests.post('https://api.bi.go.id/bi/sismontavar/sismontavar/data', data=data, headers=headers)
+    # response = requests.post('https://reqres.in/api/users', json=data, headers=headers)
     postdata = response.json()
-    print(postdata)
-    return JsonResponse(postdata)
+    print(response.status_code)
+    # return JsonResponse(postdata)
     # return JsonResponse(postdata['httpCode'] ,safe=False)
     # return JsonResponse(dict(request.headers), safe=False)
+    return JsonResponse(response.status_code, safe=False)
 
 
 
