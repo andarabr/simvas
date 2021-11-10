@@ -63,7 +63,7 @@
             <td>{{tran.trader_name}}</td>
             <td>{{tran.transaction_purpose}}</td>
             <td>
-                <button class="btn btn-success btn-sm">Send Data</button>
+                <a href='{% url 'api-test-idv' tran.id %}' class="btn btn-success btn-sm">Send Data</a>
                 {% comment %} <button class="btn btn-warning btn-sm">Resend</button> {% endcomment %}
             </td>
         </tr>

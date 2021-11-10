@@ -33,6 +33,7 @@
 
             <div class="form-inline">
                 <!-- Left Side Of Navbar -->
+                <a href="{% url 'api-test' %}"> api test</a>
                 {% if user.is_authenticated %}
                     <a class="btn btn-sm btn-outline-light disabled mr-2" readonly href="#">Logged in as : {{ user.username|default:'Guest' }}</a>
                     <a class="btn btn-sm btn-danger" href="{% url 'logout' %}">Logout</a>
