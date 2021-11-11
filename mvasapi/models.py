@@ -26,6 +26,10 @@ class Transaction(models.Model):
     trader_id = models.CharField(max_length=10)
     trader_name = models.CharField(max_length=20)
     transaction_purpose = models.CharField(max_length=40, null=True)
+    http_status = models.CharField(max_length=3, null=True)
+    http_status_desc = models.CharField(max_length=100, null=True)
+    last_post_try = models.DateTimeField(null=True)
+    last_posted_by = models.CharField(max_length=50, null=True)
 
 def __str__(self):
     """Return a string representation of the model."""
